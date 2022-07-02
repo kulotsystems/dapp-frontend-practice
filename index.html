@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>dapp-frontend-practice</title>
+</head>
+<body>
+    <div id="app">
+        <div v-cloak align="center">
+            <p v-if="message != ''">{{ message }}</p>
+            <p v-else>Current Age</p>
+            <h1>
+                <template v-if="loaded">{{ age }}</template>
+                <template v-else>...</template>
+            </h1>
+            <input type="number" v-model="newAge" placeholder="New age">
+            <button @click="setAge" :disabled="newAge == ''">Set Age</button>
+
+        </div>
+    </div>
+
+    <script src="vendor/web3.min.js"></script>
+    <script src="vendor/vue@2.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
