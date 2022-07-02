@@ -6,17 +6,22 @@ new Vue({
         age     : 0,
         newAge  : '',
         loaded  : false,
-        message : ''
+        message : '',
+        error   : null
     },
     methods: {
         // get stored age from the blockchain
         getAge() {
             this.message = 'Getting data from blockchain...';
-            this.contract.methods.getAge().call().then(age => {
+            this.contract.methods.getAge().call()
+            .then(age => {
                 this.age     = age;
                 this.loaded  = true;
                 this.message = '';
                 this.newAge  = '';
+            })
+            .catch(error => {
+                this.error = error;
             });
         },
 
@@ -36,15 +41,15 @@ new Vue({
                         this.getAge();
                     })
                     .catch(error => {
-                        console.log('ERROR: ', error);
+                        this.error = error;
                     });
                 })
                 .catch(error => {
-                    console.log("Unable to get accounts: ", error);
+                    this.error = error;
                 });
             })
             .catch(error => {
-                console.log("Unable to enable ethereum: ", error);
+                this.error = error;
             })
         }
     },

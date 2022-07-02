@@ -10,7 +10,10 @@
 <body>
     <div id="app">
         <div v-cloak align="center">
-            <p v-if="message != ''">{{ message }}</p>
+            <p style="color: red" v-if="error">
+                {{ error }}
+            </p>
+            <p v-else-if="message != ''">{{ message }}</p>
             <p v-else>Current Age</p>
             <h1>
                 <template v-if="loaded">{{ age }}</template>
