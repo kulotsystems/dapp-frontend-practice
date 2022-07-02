@@ -16,6 +16,7 @@ new Vue({
                 this.age     = age;
                 this.loaded  = true;
                 this.message = '';
+                this.newAge  = '';
             });
         },
 

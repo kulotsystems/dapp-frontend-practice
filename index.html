@@ -16,9 +16,8 @@
                 <template v-if="loaded">{{ age }}</template>
                 <template v-else>...</template>
             </h1>
-            <input type="number" v-model="newAge" placeholder="New age">
-            <button @click="setAge" :disabled="newAge == ''">Set Age</button>
-
+            <input type="number" v-model="newAge" placeholder="New age" :disabled="message != ''">
+            <button @click="setAge" :disabled="newAge == '' || message != ''">Set Age</button>
         </div>
     </div>
 
